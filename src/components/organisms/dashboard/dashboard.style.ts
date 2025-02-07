@@ -5,4 +5,7 @@ export const dashboardSx = AsSxObject({
     display: 'flex',
     width: '100%',
   },
+  content: {
+    flexGrow: 1,
+  },
 });

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.css';
 import Dashboard from 'src/components/organisms/dashboard';
+import AppProvider from 'src/components/organisms/AppProvider';
 
 const lato = Lato({
   subsets: ['latin'],
@@ -24,7 +25,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={lato.className}>
-        <Dashboard>{children}</Dashboard>
+        <AppProvider>
+          <Dashboard>{children}</Dashboard>
+        </AppProvider>
       </body>
     </html>
   );

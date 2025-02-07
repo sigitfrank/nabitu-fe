@@ -2,8 +2,8 @@
 import React from 'react';
 import InvoiceForm from 'src/components/organisms/invoiceForm';
 
-const AddInvoicePage = () => {
-  return <InvoiceForm />;
+const EditInvoicePage = () => {
+  return <InvoiceForm editMode />;
 };
 
-export default AddInvoicePage;
+export default EditInvoicePage;

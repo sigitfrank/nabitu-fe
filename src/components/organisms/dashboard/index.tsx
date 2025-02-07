@@ -12,11 +12,7 @@ export default function DashboardPagesLayout(props: {
   return (
     <Box sx={sx.root}>
       <Sidebar />
-      <Box
-        sx={{
-          flexGrow: 1,
-        }}
-      >
+      <Box sx={sx.content}>
         <Navbar />
         {props.children}
       </Box>

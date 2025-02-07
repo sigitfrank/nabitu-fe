@@ -1,3 +1,5 @@
+'use client';
+
 import { AsSxObject } from 'src/lib/types/asSxObject.type';
 
 export const navbarSx = AsSxObject({
