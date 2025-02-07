@@ -7,5 +7,6 @@ export const dashboardSx = AsSxObject({
   },
   content: {
     flexGrow: 1,
+    width: 'calc(100% - 300px)',
   },
 });

@@ -3,6 +3,10 @@ import { AsSxObject } from 'src/lib/types/asSxObject.type';
 export const sidebarSx = AsSxObject({
   sidebar: {
     background: '#1c2434',
+    display: {
+      xs: 'none',
+      md: 'block',
+    },
     minWidth: '300px',
     minHeight: '100svh',
     color: '#FFF',

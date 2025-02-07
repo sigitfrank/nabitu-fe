@@ -14,7 +14,12 @@ import { getRandomId } from 'src/utils/number';
 let showAlertTimeout: number;
 
 const useInvoiceForm = (editMode: boolean = false) => {
-  const invoiceId = useParams().id as string;
+  const params = useParams();
+  const [invoiceId, setInvoiceId] = useState('');
+  useEffect(() => {
+    setInvoiceId(params.id as string);
+  }, [params.id]);
+
   const [showAlert, setShowAlert] = useState(false);
   const { invoices, setInvoices } = useAppStore((state) => state);
   const {
@@ -30,12 +35,15 @@ const useInvoiceForm = (editMode: boolean = false) => {
     enableReinitialize: true,
     initialValues: addInvoiceInitialValues,
     onSubmit: async (values, { resetForm }) => {
+      const cleanUpNumber = String(values.number).replace(/^0+/, '');
+      const cleanUpAmount = String(values.amount).replace(/^0+/, '');
       clearTimeout(showAlertTimeout);
-      const invoiceNumber = `${invoicePrefix}${values.number}`;
-      const newInvoice = {
+      const invoiceNumber = `${invoicePrefix}${cleanUpNumber}`;
+      const newInvoice: Invoice = {
         ...values,
         id: getRandomId(),
         number: invoiceNumber,
+        amount: +cleanUpAmount,
       };
       const newInvoices =
         editMode && invoiceId

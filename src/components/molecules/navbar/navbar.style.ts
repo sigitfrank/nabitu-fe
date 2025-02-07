@@ -3,6 +3,21 @@
 import { AsSxObject } from 'src/lib/types/asSxObject.type';
 
 export const navbarSx = AsSxObject({
+  sidebarIcon: {
+    display: {
+      xs: 'block',
+      md: 'none',
+    },
+    cursor: 'pointer',
+    marginRight: 'auto',
+  },
+  mobileSidebar: {
+    background: '#1c2434',
+    minWidth: '300px',
+    minHeight: '100svh',
+    color: '#FFF',
+    p: 3,
+  },
   nav: {
     display: 'flex',
     justifyContent: 'flex-end',

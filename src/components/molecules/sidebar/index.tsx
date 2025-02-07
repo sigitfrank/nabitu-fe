@@ -6,10 +6,18 @@ import { usePathname, useRouter } from 'next/navigation';
 import Image from 'next/image';
 
 const Sidebar = () => {
+  return (
+    <Box sx={sx.sidebar}>
+      <SidebarContent />
+    </Box>
+  );
+};
+
+export const SidebarContent = () => {
   const router = useRouter();
   const pathname = usePathname();
   return (
-    <Box sx={sx.sidebar}>
+    <>
       <Box sx={sx.appHeader}>
         <Image
           src="/assets/logo.png"
@@ -39,7 +47,7 @@ const Sidebar = () => {
           })}
         </Box>
       </Box>
-    </Box>
+    </>
   );
 };
 

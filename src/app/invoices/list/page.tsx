@@ -41,6 +41,7 @@ const AddInvoicePage = () => {
         display="flex"
         alignItems="center"
         justifyContent="space-between"
+        flexWrap="wrap"
         mb={4}
       >
         <Typography sx={sx.title} variant="h5">
@@ -84,31 +85,41 @@ const AddInvoicePage = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {filteredInvoices.map((row) => (
-                  <TableRow
-                    key={row.id}
-                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                  >
-                    <TableCell component="th" scope="row" sx={sx.cell}>
-                      <Typography>{row.name}</Typography>
-                      <Typography component="small" sx={sx.inv}>
-                        {row.number}
-                      </Typography>
-                    </TableCell>
-                    <TableCell sx={sx.cell}>
-                      {format(row.date!, 'MMM dd,yyyy')}
-                    </TableCell>
-                    <TableCell sx={sx.cell}>
-                      <InvoiceStatus status={row.status as InvoiceStatusType} />
-                    </TableCell>
-                    <TableCell sx={sx.cell}>
-                      Rp {numberWithPoint(row.amount)}
-                    </TableCell>
-                    <TableCell align="center" sx={sx.cell}>
-                      <Action id={row.id} handleDelete={handleDelete} />
+                {filteredInvoices.length > 0 ? (
+                  filteredInvoices.map((row) => (
+                    <TableRow
+                      key={row.id}
+                      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                    >
+                      <TableCell component="th" scope="row" sx={sx.cell}>
+                        <Typography>{row.name}</Typography>
+                        <Typography component="small" sx={sx.inv}>
+                          {row.number}
+                        </Typography>
+                      </TableCell>
+                      <TableCell sx={sx.cell}>
+                        {format(row.date!, 'MMM dd, yyyy')}
+                      </TableCell>
+                      <TableCell sx={sx.cell}>
+                        <InvoiceStatus
+                          status={row.status as InvoiceStatusType}
+                        />
+                      </TableCell>
+                      <TableCell sx={sx.cell}>
+                        Rp {numberWithPoint(row.amount)}
+                      </TableCell>
+                      <TableCell align="center" sx={sx.cell}>
+                        <Action id={row.id} handleDelete={handleDelete} />
+                      </TableCell>
+                    </TableRow>
+                  ))
+                ) : (
+                  <TableRow>
+                    <TableCell colSpan={5} align="center">
+                      <Typography>No Data Available</Typography>
                     </TableCell>
                   </TableRow>
-                ))}
+                )}
               </TableBody>
             </Table>
           </TableContainer>

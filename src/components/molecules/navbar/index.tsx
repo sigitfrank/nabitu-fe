@@ -1,15 +1,33 @@
 import {
   ChevronLeft,
+  Menu,
   NotificationsOutlined,
   SmsOutlined,
 } from '@mui/icons-material';
-import { Avatar, Box, Switch, Typography } from '@mui/material';
-import React from 'react';
+import { Avatar, Box, Drawer, Switch, Typography } from '@mui/material';
+import React, { useState } from 'react';
 import { navbarSx as sx } from './navbar.style';
+import { SidebarContent } from '../sidebar';
 
 const Navbar = () => {
+  const [open, setOpen] = useState(false);
+
+  const toggleDrawer = (newOpen: boolean) => {
+    setOpen(newOpen);
+  };
+
   return (
     <Box component="nav" sx={sx.nav}>
+      <Box sx={sx.sidebarIcon}>
+        <Typography component="span" onClick={() => toggleDrawer(true)}>
+          <Menu />
+        </Typography>
+        <Drawer open={open} onClose={() => toggleDrawer(false)}>
+          <Box sx={sx.mobileSidebar}>
+            <SidebarContent />
+          </Box>
+        </Drawer>
+      </Box>
       <Switch />
       <Box display="flex" gap="12px">
         <Box component="span" sx={sx.iconWrapper}>

@@ -10,16 +10,8 @@ type AppStore = {
 };
 
 export const useAppStore = zustand.create<AppStore>((set) => {
-  if (typeof window === 'undefined')
-    return {
-      invoices: [],
-      setInvoices: (invoices: Invoice[]) => set(() => ({ invoices })),
-    };
-  const savedInvoices = window.localStorage.getItem(localStorageKey.invoices);
-  const initialInvoices = savedInvoices ? JSON.parse(savedInvoices) : [];
-
   return {
-    invoices: initialInvoices,
+    invoices: [],
     setInvoices: (invoices: Invoice[]) => set(() => ({ invoices })),
   };
 });
