@@ -63,6 +63,7 @@ const useInvoiceForm = (editMode: boolean = false) => {
       ...(invoiceDetail as Invoice),
       ...(invoiceDetail?.date && { date: new Date(invoiceDetail?.date) }),
       number: number?.split?.(invoicePrefix)?.[1],
+      status: invoiceDetail?.status ?? '-',
     });
   }, [editMode, invoiceId, invoices, setValues]);
 

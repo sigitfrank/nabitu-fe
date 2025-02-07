@@ -1,3 +1,5 @@
+'use client';
+
 import * as Yup from 'yup';
 import { Invoice, InvoiceStatusType } from '../types/invoice.type';
 

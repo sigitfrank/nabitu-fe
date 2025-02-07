@@ -1,3 +1,5 @@
+'use client';
+
 import * as zustand from 'zustand';
 import { Invoice } from '../types/invoice.type';
 import { localStorageKey } from 'src/constants/key.constant';
@@ -8,7 +10,12 @@ type AppStore = {
 };
 
 export const useAppStore = zustand.create<AppStore>((set) => {
-  const savedInvoices = localStorage.getItem(localStorageKey.invoices);
+  if (typeof window === 'undefined')
+    return {
+      invoices: [],
+      setInvoices: (invoices: Invoice[]) => set(() => ({ invoices })),
+    };
+  const savedInvoices = window.localStorage.getItem(localStorageKey.invoices);
   const initialInvoices = savedInvoices ? JSON.parse(savedInvoices) : [];
 
   return {

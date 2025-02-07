@@ -1,3 +1,5 @@
+'use client';
+
 import { SxTheme } from './sxs.type';
 
 export type IndexedSxType = {

@@ -6,10 +6,7 @@ type TextErrorProps = {
 };
 const TextError = ({ text }: TextErrorProps) => {
   return (
-    <Typography
-      component="small"
-      sx={{ fontSize: '12px', color: (theme) => theme.palette.error.main }}
-    >
+    <Typography component="small" sx={{ fontSize: '12px', color: `#F23030` }}>
       {text}
     </Typography>
   );

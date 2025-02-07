@@ -9,8 +9,6 @@ import {
   CardContent,
   Grid2,
   InputAdornment,
-  MenuItem,
-  Select,
   TextField,
   Typography,
 } from '@mui/material';
@@ -22,6 +20,7 @@ import useInvoiceForm from 'src/hooks/useInvoiceForm';
 import { InvoiceStatusType } from 'src/lib/types/invoice.type';
 import TextError from 'src/components/atoms/textError';
 import Content from 'src/components/molecules/content';
+import Select from 'src/components/atoms/select';
 
 type InvoiceFormProps = {
   editMode?: boolean;
@@ -136,21 +135,12 @@ const InvoiceForm = ({ editMode }: InvoiceFormProps) => {
                   <Select
                     value={values.status}
                     name="status"
+                    disabled
                     error={Boolean(touched.status && errors.status)}
                     onChange={handleChange}
-                    sx={{
-                      color: values.status === '-' ? '#b6b6b6' : '',
-                    }}
-                  >
-                    <MenuItem value="-" disabled>
-                      Choose a status
-                    </MenuItem>
-                    {Object.values(InvoiceStatusType).map((status) => (
-                      <MenuItem key={status} value={status}>
-                        {status}
-                      </MenuItem>
-                    ))}
-                  </Select>
+                    options={Object.values(InvoiceStatusType)}
+                    placeholder="Choose a status"
+                  />
                   {Boolean(touched.status && errors.status) && (
                     <TextError text={errors.status ?? ''} />
                   )}

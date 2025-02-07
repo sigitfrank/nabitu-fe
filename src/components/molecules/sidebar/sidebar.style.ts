@@ -14,7 +14,9 @@ export const sidebarSx = AsSxObject({
     gap: 2,
   },
   logo: {
-    fontSize: '32px',
+    width: '50px',
+    height: '50px',
+    mixBlendMode: 'screen',
   },
   appName: {
     fontWeight: 'bold',

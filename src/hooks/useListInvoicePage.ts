@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import { SelectChangeEvent } from '@mui/material';
 import { format } from 'date-fns';
-import { useMemo, useState } from 'react';
+import { ReactNode, useMemo, useState } from 'react';
 import { useAppStore } from 'src/lib/store/appStore';
 import { InvoiceStatusType } from 'src/lib/types/invoice.type';
 
@@ -20,9 +21,11 @@ const useListInvoicePage = () => {
   };
 
   const handleChangeStatus = (
-    e: SelectChangeEvent<string | InvoiceStatusType>,
+    e: SelectChangeEvent<unknown>,
+    _child: ReactNode,
   ) => {
-    setInvoiceStatus(e.target.value);
+    const target = e.target as EventTarget & { value: string };
+    setInvoiceStatus(target.value);
   };
 
   const handleDelete = (id: number) => {

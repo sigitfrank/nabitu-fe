@@ -38,7 +38,7 @@ export const invoiceFormSx = AsSxObject({
   },
   textFieldError: {
     '& fieldset': {
-      borderColor: (theme) => theme.palette.error.main,
+      borderColor: `F23030`,
     },
   },
   inputAdornment: {

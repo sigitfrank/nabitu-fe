@@ -1,3 +1,5 @@
+'use client';
+
 export enum InvoiceStatusType {
   paid = 'Paid',
   unpaid = 'Unpaid',

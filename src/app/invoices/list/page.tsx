@@ -4,9 +4,7 @@ import {
   Box,
   Card,
   CardContent,
-  MenuItem,
   Popover,
-  Select,
   Table,
   TableBody,
   TableCell,
@@ -25,6 +23,7 @@ import { numberWithPoint } from 'src/utils/number';
 import InvoiceStatus from 'src/components/atoms/invoiceStatus';
 import { InvoiceStatusType } from 'src/lib/types/invoice.type';
 import { useRouter } from 'next/navigation';
+import Select from 'src/components/atoms/select';
 
 const AddInvoicePage = () => {
   const {
@@ -63,15 +62,10 @@ const AddInvoicePage = () => {
             value={invoiceStatus}
             name="status"
             onChange={handleChangeStatus}
+            options={Object.values(InvoiceStatusType)}
+            placeholder="All Status"
             sx={sx.textField}
-          >
-            <MenuItem value="-">All Status</MenuItem>
-            {Object.values(InvoiceStatusType).map((status) => (
-              <MenuItem key={status} value={status}>
-                {status}
-              </MenuItem>
-            ))}
-          </Select>
+          />
         </Box>
       </Box>
       <Card variant="outlined" sx={sx.card}>

@@ -1,6 +1,7 @@
-import { SxProps } from '@mui/material';
-import { theme } from 'src/styles/newTheme.style';
+'use client';
 
-export type SxTheme = SxProps<typeof theme>;
+import { SxProps } from '@mui/material';
+
+export type SxTheme = SxProps;
 
 export type Sxs<T extends string> = Partial<Record<T, SxTheme>>;
